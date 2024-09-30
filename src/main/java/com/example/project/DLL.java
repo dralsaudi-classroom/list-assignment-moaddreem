@@ -64,16 +64,28 @@ public class DLL<T> {
         else
             current = current.next;
     }
-    public void removeBetween(T e1, T e2) {
-        throw new UnsupportedOperationException("Not supported yet.");
-        // throw new UnsupportedOperationException("Not supported yet.");
-        // Write the method removeBetween, member of the class DoubleLinkedList. The method
-        // takes two elements e1 and e2, and removes all the elements between the two elements
-        // (e1 and e2 not included). If e1 or e2 or both doesn’t exist, no element will be removed. You can assume the elements to be unique, e1 comes before e2, and that
-        // e1 ̸= e2. Current is moved to head if the removal is successful. Do not call any
-        // methods and do not use any auxiliary data structures. The method signature
-        // is: public void removeBetween(T e1, T e2).
-        // Example 3.1. Given the list: A ↔ B ↔ C ↔ D ↔ E ↔ F, removeBetween(’B’,
-        // ’E’) results in: A ↔ B ↔ E ↔ F.
+        public void removeBetween(T e1, T e2) {
+        if(head == null)
+            return;
+        DLLNode<T> first = null;
+        DLLNode<T> last = null;
+
+        current = head;
+        while(current.next != null){
+            if(current.data.equals(e1))
+                first = current;
+            if(current.data.equals(e2))
+                last = current;
+
+            current = current.next;
+        }
+        if(current.data.equals(e2))
+                last = current;
+        if(first == null || last == null || first == last)
+            return;
+        
+        first.next = last;
+        last.previous = first;
+
     }
 }
