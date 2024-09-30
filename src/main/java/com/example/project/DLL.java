@@ -64,7 +64,7 @@ public class DLL<T> {
         else
             current = current.next;
     }
-    public void removeBetween(T e1, T e2) {
+        public void removeBetween(T e1, T e2) {
         if(head == null)
             return;
         DLLNode<T> first = null;
@@ -72,25 +72,18 @@ public class DLL<T> {
 
         current = head;
         while(current.next != null){
-            if(current.equals(e1))
+            if(current.data.equals(e1))
                 first = current;
-            if(current.equals(e2))
+            if(current.data.equals(e2))
                 last = current;
 
             current = current.next;
         }
+        if(current.data.equals(e2))
+                last = current;
         if(first == null || last == null || first == last)
             return;
-        if(current.equals(e2))
-                last = current;
-
-	DLLNode<T> temp = first.next;
-    while (temp != null && temp != last) {
-        DLLNode<T> nextNode = temp.next;
-        temp.previous = null;
-        temp.next = null;
-        temp = nextNode;
-    }
+        
         first.next = last;
         last.previous = first;
 
