@@ -83,6 +83,14 @@ public class DLL<T> {
             return;
         if(current.equals(e2))
                 last = current;
+
+	DLLNode<T> temp = first.next;
+    while (temp != null && temp != last) {
+        DLLNode<T> nextNode = temp.next;
+        temp.previous = null;
+        temp.next = null;
+        temp = nextNode;
+    }
         first.next = last;
         last.previous = first;
 
