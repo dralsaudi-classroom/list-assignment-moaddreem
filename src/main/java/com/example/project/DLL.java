@@ -81,7 +81,7 @@ public class DLL<T> {
         }
         if(first == null || last == null || first == last)
             return;
-        if(current == e2)
+        if(current.equals(e2))
                 last = current;
         first.next = last;
         last.previous = first;
